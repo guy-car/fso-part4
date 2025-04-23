@@ -121,6 +121,37 @@ describe('When there is initially several blogs saved', () => {
                 .expect(400)
         })
     })
+    describe('deleting a blog', () => {
+        test.only('succeeds with status code 204 if id is valid', async () => {
+            const blogsAtStart = await helper.blogsInDb()
+            const blogToDelete = blogsAtStart[0]
+
+            await api
+                .delete(`/api/blogs/${blogToDelete.id}`)
+                .expect(204)
+        })
+        test.only('successfully deletes the targeted blog', async () => {
+            const blogsAtStart = await helper.blogsInDb()
+            const blogToDelete = blogsAtStart[0]
+
+            await api
+                .delete(`/api/blogs/${blogToDelete.id}`)
+
+            const blogsAtEnd = await helper.blogsInDb()
+            const blogTitles = blogsAtEnd.map(blog => blog.title)
+            assert(!blogTitles.includes(blogToDelete.title))
+
+            assert.strictEqual(blogsAtEnd.length, helper.severalBlogs.length - 1)
+        })
+        test.only('fails with status code 400 if id is incorrect', async () => {
+            const blogsAtStart = await helper.blogsInDb()
+            const blogToDelete = blogsAtStart[0]
+
+            await api
+                .delete('/api/blogs/0555424424242422')
+                .expect(400)
+        })
+    })
 })
 
 after(async () => {
