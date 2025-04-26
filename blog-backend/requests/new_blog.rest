@@ -1,9 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imd1eS1jYXIiLCJpZCI6IjY4MGJhZmMxNWFhOWM0N2Q3YTFjMDYyNiIsImlhdCI6MTc0NTY5Mzg4OCwiZXhwIjoxNzQ1Njk3NDg4fQ.YiXApPXPrHxH6cHaC7eUXhyrNxMCi-eMT7rrUrniQM8
 
 {
-    "title": "Test blog 3",
-    "author": "Daviann",
-    "url": "www.test3.com",
-    "likes": 53
+    "title": "Douar",
+    "author": "Xodox",
+    "url": "www.test15.com",
+    "likes": 15,
+    "userId": "680d2e912abab01d6c944710"
 }
